@@ -13,9 +13,11 @@ import { Component, OnInit } from '@angular/core';
     </div>
   </section>
 
+  <div class="container has-text-centered" >
+  <section class="sec">
   <section class="hero is-bold">
     <div class="hero-body has-text-centered">
-    <div class="container ">
+    <div class="container">
         <p class="subtitle is-bold has-text-dark">
         Roll a 6 sided die <br>
         Roll a 3,4,5, or 6 to gain a Choice Card<br>
@@ -38,36 +40,43 @@ import { Component, OnInit } from '@angular/core';
     <section class="section">
       <div class="container has-text-centered p-auto">
         <button class="button is-primary is-medium  is-outlined" (click)= "RollDice()">
-          Roll the dice!
+          Roll the die!
         </button>
       </div>
     </section>
+    </section>
 
+    <section class="sec">
     <section class="section">
       <div class="container has-text-centered" id="cardContainer">
         <img class="image" src= {{src}} alt="Card" id="cardPic">
       </div>
     </section>
+    </section>
+    </div>
   `,
   styles: [`
     .image{
       max-height: 500px;
-      height: 70%;
+      height: 100%;
       width: auto;
       margin: auto;
-      display: block;
+      display: inline-block;
+    }
+    .sec{
+      display:inline-block;
     }
   `]
 })
 export class HomeComponent {
 
   getResource(){
-    const r = (Math.floor(Math.random() * 6) + 1); //3 cards per token
+    const r = (Math.floor(Math.random() * 12) + 1); //6 cards per token(3 ones, 2 twos, 1 three)
     this.src = "/assets/img/resource/"+r.toString()+".png" ;
   }
 
   getChoice(){
-    const r = (Math.floor(Math.random() * 7) + 1);//7 cards rn
+    const r = (Math.floor(Math.random() * 13) + 1);//13 cards rn
     this.src = "/assets/img/choice/"+r.toString()+".png" ;
   }
 
@@ -85,6 +94,6 @@ export class HomeComponent {
       //The number is even
    }
   }
-  number = "Click the button to roll the dice";
+  number = "Click the button to roll the die";
   src= "/assets/img/back_of_card.png" ;
 }
