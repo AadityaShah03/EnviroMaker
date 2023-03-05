@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Insta-Dog": {
+    "EnviroMaker": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/insta-dog",
+            "outputPath": "dist/EnviroMaker",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -90,10 +90,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Insta-Dog:build:production"
+              "browserTarget": "EnviroMaker:build:production"
             },
             "development": {
-              "browserTarget": "Insta-Dog:build:development"
+              "browserTarget": "EnviroMaker:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -101,7 +101,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Insta-Dog:build"
+            "browserTarget": "EnviroMaker:build"
           }
         }
       }

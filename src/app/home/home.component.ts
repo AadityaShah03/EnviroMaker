@@ -17,7 +17,9 @@ import { Component, OnInit } from '@angular/core';
     <div class="hero-body has-text-centered">
     <div class="container ">
         <p class="subtitle is-bold has-text-dark">
-          Even Number: Choice Card, Odd Number: Resource Card
+        Roll a 6 sided die <br>
+        Roll a 3,4,5, or 6 to gain a Choice Card<br>
+        Roll a 1 or 2 to gain a Resource Card
         </p>
       </div>
     </div>
@@ -65,113 +67,24 @@ export class HomeComponent {
   }
 
   getChoice(){
-    const r = (Math.floor(Math.random() * 6) + 1);//6 cards rn
+    const r = (Math.floor(Math.random() * 7) + 1);//7 cards rn
     this.src = "/assets/img/choice/"+r.toString()+".png" ;
   }
 
   RollDice() {
     const r = (Math.floor(Math.random() * 6) + 1);
 
-    if(r % 2==0){
-      this.even=true;
-      this.number= r.toString() + " is Even";
+    if(r==1 || r==2){
+     this.number= r.toString() ;
+      this.getResource();
+      //The number is odd
+   }
+   else {
+      this.number= r.toString();
       this.getChoice();
       //The number is even
    }
-   else {
-    this.even=false;
-    this.number= r.toString() + " is Odd";
-    this.getResource();
-    //The number is odd
-   }
   }
-
-  even = true;
-  number = "Click roll to roll the dice";
+  number = "Click the button to roll the dice";
   src= "/assets/img/back_of_card.png" ;
-
-
-
-  /*getRandomPic() {
-    this.dogService.getRandomPics().subscribe(
-      data=>{
-        let values = JSON.parse(JSON.stringify(data.message));
-        //select.innerHTML= "<img src="+values+" alt='dog' >";
-        this.src = values;
-        this.show=true;
-      },
-      error =>{
-        console.log("error")
-      }
-    )
-  }
-
-  saveRating(){
-    let ratingInput =Number((<HTMLInputElement> document.getElementById("rateNum")).value);
-    if(!(ratingInput>10 || ratingInput<0) && this.src!="/assets/img/dog.jpg" && (<HTMLInputElement> document.getElementById("rateNum")).value!=""){
-      this.cookies.set(this.src,ratingInput.toString());
-      (<HTMLInputElement> document.getElementById("rateNum")).value="";
-      this.getRandomPic();
-      this.getHistory();
-      if(this.i){
-        this.sortAcc();
-      }
-      else{
-        this.sortDec();
-      }
-
-    }
-  }
-
-  saveRatingEnter(e: { preventDefault: () => void; }):void{
-    e.preventDefault();
-    let ratingInput =Number((<HTMLInputElement> document.getElementById("rateNum")).value);
-    if(!(ratingInput>10 || ratingInput<0) && this.src!="/assets/img/dog.jpg" && (<HTMLInputElement> document.getElementById("rateNum")).value!=""){
-      this.cookies.set(this.src,ratingInput.toString());
-      (<HTMLInputElement> document.getElementById("rateNum")).value="";
-      this.getRandomPic();
-      this.getHistory();
-      if(this.i){
-        this.sortAcc();
-      }
-      else{
-        this.sortDec();
-      }
-
-    }
-  }
-
-  getHistory(){
-    let temp:{} =this.cookies.getAll();
-    const info: any[] = [];
-    this.ratings=Object.entries(temp).map( entry =>({key:entry[0],value:entry[1]}));
-    console.log(this.ratings);
-  }
-
-  sortDec(){
-    this.ratings.sort(function(a,b) {
-      return b.value - a.value
-    });
-  }
-
-  sortAcc(){
-    this.ratings.sort(function(a,b) {
-      return a.value -b.value
-    });
-  }
-
-  toggleOrder(){
-    if(this.i){
-      this.i=false;
-      this.getHistory();
-      this.sortDec();
-    }else{
-      this.i=true;
-      this.getHistory();
-      this.sortAcc();
-    }
-  }
-*/
-
-
 }
