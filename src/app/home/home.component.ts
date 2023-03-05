@@ -60,12 +60,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent {
 
   getResource(){
-    const r = (Math.floor(Math.random() * 6) + 1);
+    const r = (Math.floor(Math.random() * 6) + 1); //3 cards per token
     this.src = "/assets/img/resource/"+r.toString()+".png" ;
   }
 
   getChoice(){
-    const r = (Math.floor(Math.random() * 6) + 1);
+    const r = (Math.floor(Math.random() * 6) + 1);//6 cards rn
     this.src = "/assets/img/choice/"+r.toString()+".png" ;
   }
 
@@ -75,6 +75,7 @@ export class HomeComponent {
     if(r % 2==0){
       this.even=true;
       this.number= r.toString() + " is Even";
+      this.getChoice();
       //The number is even
    }
    else {
